@@ -1,6 +1,7 @@
 from typing import Dict, List, Tuple, Optional, Union
 import tensorflow as tf
 from tabnet_keras.glu import GLULayer
+import math
 
 class FeatureTransformer(tf.keras.layers.Layer):
     def __init__(
@@ -41,7 +42,7 @@ class FeatureTransformer(tf.keras.layers.Layer):
             " should be greater than 0.")
         
         self.units = units
-        self.norm_factor = tf.math.sqrt(tf.constant(0.5))
+        self.norm_factor = math.sqrt(0.5)
 
         self.glu_layers = list()
         for i in range(n_glu_layers):
